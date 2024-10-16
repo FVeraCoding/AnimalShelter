@@ -4,7 +4,12 @@
  */
 package interfaz;
 
+import interfaz.gatos.general.AdoptarGatos;
+import interfaz.gatos.general.VerGatos;
+import interfaz.perros.general.AdoptarPerros;
+import interfaz.perros.general.VerPerros;
 import java.awt.Color;
+import logica.PerrosGatos;
 
 /**
  *
@@ -17,6 +22,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     public PantallaPrincipal() {
         initComponents();
+        PerrosGatos.crearGatos();
+        PerrosGatos.crearPerros();
         getContentPane().setBackground(Color.pink);
     }
 
@@ -42,11 +49,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuPerros = new javax.swing.JMenu();
         jMenuItemPerrosVer = new javax.swing.JMenuItem();
         jMenuItemPerrosAdoptar = new javax.swing.JMenuItem();
-        jMenuItemPerrosDarAdopcion = new javax.swing.JMenuItem();
         jMenuGatos = new javax.swing.JMenu();
         jMenuItemGatosVer = new javax.swing.JMenuItem();
         jMenuItemGatosAdoptar = new javax.swing.JMenuItem();
-        jMenuItemDarAdopcion = new javax.swing.JMenuItem();
         jMenuCuenta = new javax.swing.JMenu();
         jMenuItemCuentaDatos = new javax.swing.JMenuItem();
 
@@ -69,25 +74,47 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("¿Quieres registrarte?");
 
         jButton1.setText("Iniciar sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Registrarte");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenuPerros.setText("Perros");
 
         jMenuItemPerrosVer.setText("Ver");
+        jMenuItemPerrosVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPerrosVerActionPerformed(evt);
+            }
+        });
         jMenuPerros.add(jMenuItemPerrosVer);
 
         jMenuItemPerrosAdoptar.setText("Adoptar");
+        jMenuItemPerrosAdoptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPerrosAdoptarActionPerformed(evt);
+            }
+        });
         jMenuPerros.add(jMenuItemPerrosAdoptar);
-
-        jMenuItemPerrosDarAdopcion.setText("Dar en adopción");
-        jMenuPerros.add(jMenuItemPerrosDarAdopcion);
 
         jMenuBar1.add(jMenuPerros);
 
         jMenuGatos.setText("Gatos");
 
         jMenuItemGatosVer.setText("Ver");
+        jMenuItemGatosVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGatosVerActionPerformed(evt);
+            }
+        });
         jMenuGatos.add(jMenuItemGatosVer);
 
         jMenuItemGatosAdoptar.setText("Adoptar");
@@ -98,14 +125,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         jMenuGatos.add(jMenuItemGatosAdoptar);
 
-        jMenuItemDarAdopcion.setText("Dar en adopción");
-        jMenuGatos.add(jMenuItemDarAdopcion);
-
         jMenuBar1.add(jMenuGatos);
 
         jMenuCuenta.setText("Cuenta");
 
         jMenuItemCuentaDatos.setText("Datos");
+        jMenuItemCuentaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCuentaDatosActionPerformed(evt);
+            }
+        });
         jMenuCuenta.add(jMenuItemCuentaDatos);
 
         jMenuBar1.add(jMenuCuenta);
@@ -160,8 +189,38 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemGatosAdoptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGatosAdoptarActionPerformed
-        // TODO add your handling code here:
+        AdoptarGatos adoptarGatos = new AdoptarGatos(this, false);
+        adoptarGatos.setVisible(true);  
     }//GEN-LAST:event_jMenuItemGatosAdoptarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        InicioSesion inicio = new InicioSesion(this, true);
+        inicio.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Registro registro = new Registro(this, true);
+        registro.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItemPerrosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPerrosVerActionPerformed
+        VerPerros verPerros = new VerPerros(this, false);
+        verPerros.setVisible(true);
+    }//GEN-LAST:event_jMenuItemPerrosVerActionPerformed
+
+    private void jMenuItemGatosVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGatosVerActionPerformed
+        VerGatos verGatos = new VerGatos(this, false);
+        verGatos.setVisible(true);
+    }//GEN-LAST:event_jMenuItemGatosVerActionPerformed
+
+    private void jMenuItemPerrosAdoptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPerrosAdoptarActionPerformed
+        AdoptarPerros adoptarPerros = new AdoptarPerros(this, false);
+        adoptarPerros.setVisible(true);
+    }//GEN-LAST:event_jMenuItemPerrosAdoptarActionPerformed
+
+    private void jMenuItemCuentaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCuentaDatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemCuentaDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +269,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuCuenta;
     private javax.swing.JMenu jMenuGatos;
     private javax.swing.JMenuItem jMenuItemCuentaDatos;
-    private javax.swing.JMenuItem jMenuItemDarAdopcion;
     private javax.swing.JMenuItem jMenuItemGatosAdoptar;
     private javax.swing.JMenuItem jMenuItemGatosVer;
     private javax.swing.JMenuItem jMenuItemPerrosAdoptar;
-    private javax.swing.JMenuItem jMenuItemPerrosDarAdopcion;
     private javax.swing.JMenuItem jMenuItemPerrosVer;
     private javax.swing.JMenu jMenuPerros;
     // End of variables declaration//GEN-END:variables
