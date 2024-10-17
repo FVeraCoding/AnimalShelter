@@ -1,16 +1,18 @@
-
 package interfaz;
 
+import actores.Socio;
 import java.awt.Color;
-
+import java.util.Date;
+import javax.swing.JOptionPane;
+import logica.ListaSocios;
 
 public class Registro extends javax.swing.JDialog {
 
     private PantallaPrincipal p;
-    
+
     public Registro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        p = (PantallaPrincipal)parent;
+        p = (PantallaPrincipal) parent;
         initComponents();
         getContentPane().setBackground(Color.pink);
 
@@ -37,7 +39,7 @@ public class Registro extends javax.swing.JDialog {
         jTextFieldTelefono = new javax.swing.JTextField();
         jTextFieldUsuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordFieldContras = new javax.swing.JPasswordField();
         jLabelFechaNacimiento = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
 
@@ -60,8 +62,18 @@ public class Registro extends javax.swing.JDialog {
         jLabelTelefono.setText("Teléfono: ");
 
         jButton1.setText("Registrarse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordFieldContras.setText("jPasswordField1");
+        jPasswordFieldContras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldContrasActionPerformed(evt);
+            }
+        });
 
         jLabelFechaNacimiento.setText("Fecha Nacimiento");
 
@@ -89,7 +101,7 @@ public class Registro extends javax.swing.JDialog {
                     .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPasswordFieldContras, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldTelefono))
                 .addGap(48, 48, 48))
             .addGroup(layout.createSequentialGroup()
@@ -145,7 +157,7 @@ public class Registro extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabelContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldContras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -153,6 +165,34 @@ public class Registro extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nombre = jTextFieldNombre.getText();
+        String apellidos = jTextFieldApellidos.getText();
+        int telefono = 999999999;
+        
+        if(telefono> 99999999 && telefono<1000000000 && !jTextFieldTelefono.getText().isEmpty()){
+            telefono = Integer.parseInt(jTextFieldTelefono.getText());
+        }
+        Date fechaRegistro = (Date) jSpinner1.getValue();
+        String usuario = jTextFieldUsuario.getText();
+        String contraseña = jPasswordFieldContras.getText();
+
+        Socio socio = new Socio(nombre, apellidos, telefono, fechaRegistro, usuario, contraseña);
+
+        if (!nombre.isEmpty() && !apellidos.isEmpty() && telefono != 0 && !usuario.isEmpty() && !contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Registro realizado con éxito..", "Válido", JOptionPane.INFORMATION_MESSAGE);
+            ListaSocios.addSocio(socio);
+            this.setVisible(false);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordFieldContrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldContrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldContrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -165,7 +205,7 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordFieldContras;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextFieldApellidos;
     private javax.swing.JTextField jTextFieldNombre;

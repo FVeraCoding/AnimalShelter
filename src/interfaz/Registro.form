@@ -44,7 +44,7 @@
                   <Component id="jTextFieldApellidos" alignment="1" max="32767" attributes="0"/>
                   <Component id="jSpinner1" alignment="1" pref="174" max="32767" attributes="0"/>
                   <Component id="jTextFieldUsuario" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jPasswordField1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jPasswordFieldContras" alignment="1" max="32767" attributes="0"/>
                   <Component id="jTextFieldTelefono" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
@@ -117,7 +117,7 @@
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="jLabelContraseña" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordFieldContras" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -180,11 +180,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="jPasswordFieldContras">
       <Properties>
         <Property name="text" type="java.lang.String" value="jPasswordField1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldContrasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFechaNacimiento">
       <Properties>

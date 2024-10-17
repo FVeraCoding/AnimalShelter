@@ -1,19 +1,46 @@
-
 package interfaz;
 
 import java.awt.Color;
-
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import logica.ListaSocios;
 
 public class InicioSesion extends javax.swing.JDialog {
 
-    /**
-     * Creates new form InicioSesion
-     */
+    private boolean loginExitoso = false;
+    
     public InicioSesion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         getContentPane().setBackground(Color.pink);
     }
+
+    public boolean isLoginExitoso() {
+        return loginExitoso;
+    }
+
+    public void setLoginExitoso(boolean loginExitoso) {
+        this.loginExitoso = loginExitoso;
+    }
+
+    public JPasswordField getjPasswordFieldContraseña() {
+        return jPasswordFieldContraseña;
+    }
+
+    public void setjPasswordFieldContraseña(JPasswordField jPasswordFieldContraseña) {
+        this.jPasswordFieldContraseña = jPasswordFieldContraseña;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +70,11 @@ public class InicioSesion extends javax.swing.JDialog {
         jLabel2.setText("Inicio de sesión");
 
         jButton1.setText("Iniciar sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,6 +119,27 @@ public class InicioSesion extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        for (int i = 0; i < ListaSocios.getListaSocios().size(); i++) {
+            String usuario = ListaSocios.getListaSocios().get(i).getUsuario();
+            String contraseña = ListaSocios.getListaSocios().get(i).getContraseña();
+
+            if (jTextFieldUsuario.getText().equals(usuario)
+                    && new String(jPasswordFieldContraseña.getPassword()).equals(contraseña)) {
+                loginExitoso = true;
+                break;  
+            }
+        }
+
+        if (loginExitoso) {
+            JOptionPane.showMessageDialog(this, "Inicio de sesión correcto", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
