@@ -34,13 +34,13 @@ public class VerGatos extends javax.swing.JDialog {
     public VerGatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.getContentPane().setBackground(Color.pink);
-        this.jPanelFotosGatos1.setBackground(Color.pink);
-        this.jPanelNombreGatos1.setBackground(Color.pink);
-        this.jPanelFotosGatos2.setBackground(Color.pink);
-        this.jPanelNombreGatos2.setBackground(Color.pink);
-        this.jPanelFotosGatos3.setBackground(Color.pink);
-        this.jPanelNombreGatos3.setBackground(Color.pink);
+        
+        this.jPanelFotosGatos1.setOpaque(false);
+        this.jPanelNombreGatos1.setOpaque(false);
+        this.jPanelFotosGatos2.setOpaque(false);
+        this.jPanelNombreGatos2.setOpaque(false);
+        this.jPanelFotosGatos3.setOpaque(false);
+        this.jPanelNombreGatos3.setOpaque(false);
 
         this.setImageLabel(jLabelFotoGato1, PerrosGatos.getListaGatos().get(0).getUrl());
         this.setImageLabel(jLabelFotoGato2, PerrosGatos.getListaGatos().get(1).getUrl());
@@ -135,9 +135,28 @@ public class VerGatos extends javax.swing.JDialog {
         }
     });
 
+        this.setFondoPantalla();
+        
     }
     
    
+    private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg"));
+
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

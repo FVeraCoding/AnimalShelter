@@ -37,12 +37,12 @@ public class VerPerros extends javax.swing.JDialog {
         getContentPane().setBackground(Color.pink);
 
         initComponents();
-        this.jPanelNombrePerros1.setBackground(Color.pink);
-        this.jPanelFotosPerros2.setBackground(Color.pink);
-        this.jPanelFotos1.setBackground(Color.pink);
-        this.jPanelNombrePerros2.setBackground(Color.pink);
-        this.jPanelFotosPerros3.setBackground(Color.pink);
-        this.jPanelNombrePerros3.setBackground(Color.pink);
+        this.jPanelFotos1.setOpaque(false);
+        this.jPanelNombrePerros1.setOpaque(false);
+        this.jPanelFotosPerros2.setOpaque(false);
+        this.jPanelNombrePerros2.setOpaque(false);
+        this.jPanelFotosPerros3.setOpaque(false);
+        this.jPanelNombrePerros3.setOpaque(false);
 
         // Establecer fotos y nombres de perros.
         this.setImageLabel(jLabelFotoPerro1, PerrosGatos.getListaPerros().get(0).getUrl());
@@ -128,9 +128,27 @@ public class VerPerros extends javax.swing.JDialog {
             dialogoPerro9.setVisible(true);
         }
     });
+        
+        this.setFondoPantalla();
     }
     
-    
+    private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg"));
+
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

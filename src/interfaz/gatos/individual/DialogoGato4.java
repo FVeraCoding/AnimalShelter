@@ -30,6 +30,24 @@ public class DialogoGato4 extends javax.swing.JDialog {
         this.getContentPane().setBackground(Color.pink);
         this.jLabelFoto.setBackground(Color.pink);
         this.jLabelColor.setBackground(Color.pink);
+        this.setFondoPantalla();
+    }
+    
+    private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg"));
+
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
     }
 
     
@@ -47,6 +65,8 @@ public class DialogoGato4 extends javax.swing.JDialog {
             e.printStackTrace(); // Imprimimos cualquier excepción que ocurra
         }
     }
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

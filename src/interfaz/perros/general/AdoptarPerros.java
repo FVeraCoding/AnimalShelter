@@ -5,10 +5,15 @@
 package interfaz.perros.general;
 
 import interfaz.PantallaPrincipal;
-import interfaz.tablemodels.GatosTableModel;
 import interfaz.tablemodels.PerrosTableModel;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 import logica.PerrosGatos;
@@ -29,7 +34,51 @@ public class AdoptarPerros extends javax.swing.JDialog {
         p = (PantallaPrincipal) parent;
         this.getContentPane().setBackground(Color.pink);
         this.actualizarTabla();
+        
     }
+    
+    private void setFondoPantalla() {
+    // Carga de la imagen de fondo desde el archivo
+    ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg")); // Cambia la ruta según tu imagen
+
+    // Crear un JLabel que contenga la imagen
+    JLabel fondoLabel = new JLabel(fondo);
+
+    // Configuramos el tamaño del JLabel al tamaño del JDialog
+    fondoLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+
+    // Crear un JLayeredPane
+    JLayeredPane layeredPane = new JLayeredPane();
+    layeredPane.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
+
+    // Añadir el JLabel con la imagen al JLayeredPane
+    layeredPane.add(fondoLabel, JLayeredPane.DEFAULT_LAYER);
+
+    // Crear un panel para contener los demás componentes
+    JPanel panelSuperior = new JPanel();
+    panelSuperior.setOpaque(false); // Hacer el panel transparente
+    panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.Y_AXIS)); // Layout vertical
+
+    // Añadir todos los componentes al panel superior
+    panelSuperior.add(jLabelTitulo);
+    panelSuperior.add(jLabelSelecciona);
+    panelSuperior.add(jScrollPane1);
+    panelSuperior.add(jTextFieldBuscar);
+    panelSuperior.add(jButtonBuscar);
+    panelSuperior.add(jButtonAdoptar);
+
+    // Añadir el panel al JLayeredPane
+    layeredPane.add(panelSuperior, JLayeredPane.PALETTE_LAYER);
+
+    // Añadir el JLayeredPane al contenedor del JDialog
+    this.getContentPane().add(layeredPane);
+    this.getContentPane().revalidate(); // Revalidar el contenedor
+    this.getContentPane().repaint(); // Volver a pintar
+}
+
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
