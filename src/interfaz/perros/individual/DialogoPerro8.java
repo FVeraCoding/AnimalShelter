@@ -92,16 +92,16 @@ public class DialogoPerro8 extends javax.swing.JDialog {
         jLabelNombre.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelNombre.setText("Nombre: ");
 
-        jLabelRaza.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelRaza.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelRaza.setText("Raza: ");
 
-        jLabelPeso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelPeso.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelPeso.setText("Peso:");
 
-        jLabelColor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelColor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelColor.setText("Color: ");
 
-        jLabelSexo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelSexo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelSexo.setText("Sexo: ");
 
         jLabelDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -143,12 +143,13 @@ public class DialogoPerro8 extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(172, 172, 172)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jLabelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50))))

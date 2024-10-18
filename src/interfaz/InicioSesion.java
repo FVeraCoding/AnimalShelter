@@ -1,6 +1,8 @@
 package interfaz;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -8,15 +10,35 @@ import logica.ListaSocios;
 
 public class InicioSesion extends javax.swing.JDialog {
 
-    private boolean loginExitoso = false;
+    private static boolean loginExitoso = false;
+    private static String usuario;
+    private static String contraseña;
     
     public InicioSesion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         getContentPane().setBackground(Color.pink);
+        this.setFondoPantalla();
+    }
+    
+       private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondoGatos.jpg"));
+
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
     }
 
-    public boolean isLoginExitoso() {
+    public static boolean isLoginExitoso() {
         return loginExitoso;
     }
 
@@ -39,6 +61,23 @@ public class InicioSesion extends javax.swing.JDialog {
     public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
         this.jTextFieldUsuario = jTextFieldUsuario;
     }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario) {
+        InicioSesion.usuario = usuario;
+    }
+
+    public static String getContraseña() {
+        return contraseña;
+    }
+
+    public static void setContraseña(String contraseña) {
+        InicioSesion.contraseña = contraseña;
+    }
+    
     
     
 
@@ -73,6 +112,12 @@ public class InicioSesion extends javax.swing.JDialog {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPasswordFieldContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldContraseñaActionPerformed(evt);
             }
         });
 
@@ -123,8 +168,8 @@ public class InicioSesion extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         for (int i = 0; i < ListaSocios.getListaSocios().size(); i++) {
-            String usuario = ListaSocios.getListaSocios().get(i).getUsuario();
-            String contraseña = ListaSocios.getListaSocios().get(i).getContraseña();
+             usuario = ListaSocios.getListaSocios().get(i).getUsuario();
+             contraseña = ListaSocios.getListaSocios().get(i).getContraseña();
 
             if (jTextFieldUsuario.getText().equals(usuario)
                     && new String(jPasswordFieldContraseña.getPassword()).equals(contraseña)) {
@@ -140,6 +185,10 @@ public class InicioSesion extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordFieldContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldContraseñaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

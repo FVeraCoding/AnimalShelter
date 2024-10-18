@@ -8,6 +8,8 @@ import interfaz.PantallaPrincipal;
 import interfaz.tablemodels.GatosTableModel;
 import java.awt.Color;
 import static java.util.Locale.filter;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
@@ -29,6 +31,24 @@ public class AdoptarGatos extends javax.swing.JDialog {
         p = (PantallaPrincipal) parent;
         this.getContentPane().setBackground(Color.pink);
         this.actualizarTabla();
+        this.setFondoPantalla();
+    }
+    
+    private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg"));
+
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
     }
 
     /**

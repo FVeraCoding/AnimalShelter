@@ -11,6 +11,7 @@ import interfaz.perros.general.VerPerros;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import logica.PerrosGatos;
 
 /**
@@ -19,9 +20,7 @@ import logica.PerrosGatos;
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PantallaPrincipal
-     */
+    
     public PantallaPrincipal() {
         initComponents();
         PerrosGatos.crearGatos();
@@ -240,7 +239,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemPerrosAdoptarActionPerformed
 
     private void jMenuItemCuentaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCuentaDatosActionPerformed
-        // TODO add your handling code here:
+     if(InicioSesion.isLoginExitoso()){
+         Datos datos = new Datos(this, true);
+         datos.setVisible(true);
+     }else{
+         JOptionPane.showMessageDialog(this, "No se ha iniciado sesión.", "Error", JOptionPane.ERROR_MESSAGE);
+     }
     }//GEN-LAST:event_jMenuItemCuentaDatosActionPerformed
 
     /**

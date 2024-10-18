@@ -90,16 +90,16 @@ public class DialogoPerro2 extends javax.swing.JDialog {
         jLabelNombre.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelNombre.setText("Nombre: ");
 
-        jLabelRaza.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelRaza.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelRaza.setText("Raza: ");
 
-        jLabelPeso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelPeso.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelPeso.setText("Peso:");
 
-        jLabelColor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelColor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelColor.setText("Color: ");
 
-        jLabelSexo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelSexo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabelSexo.setText("Sexo: ");
 
         jLabelDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

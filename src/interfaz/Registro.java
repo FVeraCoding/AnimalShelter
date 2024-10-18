@@ -3,6 +3,8 @@ package interfaz;
 import actores.Socio;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import logica.ListaSocios;
 
@@ -15,7 +17,24 @@ public class Registro extends javax.swing.JDialog {
         p = (PantallaPrincipal) parent;
         initComponents();
         getContentPane().setBackground(Color.pink);
+        this.setFondoPantalla();
+    }
+    
+    private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondoGatos.jpg"));
 
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
+
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
+
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
+
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
     }
 
     /**
@@ -68,7 +87,6 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
-        jPasswordFieldContras.setText("jPasswordField1");
         jPasswordFieldContras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldContrasActionPerformed(evt);

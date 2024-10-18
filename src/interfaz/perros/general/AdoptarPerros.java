@@ -34,48 +34,26 @@ public class AdoptarPerros extends javax.swing.JDialog {
         p = (PantallaPrincipal) parent;
         this.getContentPane().setBackground(Color.pink);
         this.actualizarTabla();
+        this.setFondoPantalla();
         
     }
     
-    private void setFondoPantalla() {
-    // Carga de la imagen de fondo desde el archivo
-    ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg")); // Cambia la ruta según tu imagen
+     private void setFondoPantalla() {
+        // Carga de la imagen de fondo desde el archivo
+            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondogatos.jpg"));
 
-    // Crear un JLabel que contenga la imagen
-    JLabel fondoLabel = new JLabel(fondo);
+        // Crear un JLabel que contenga la imagen
+        JLabel fondoLabel = new JLabel(fondo);
 
-    // Configuramos el tamaño del JLabel al tamaño del JDialog
-    fondoLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+        // Configuramos el tamaño del JLabel al tamaño del JFrame
+        fondoLabel.setSize(this.getWidth(), this.getHeight());
 
-    // Crear un JLayeredPane
-    JLayeredPane layeredPane = new JLayeredPane();
-    layeredPane.setPreferredSize(new Dimension(this.getWidth(), this.getHeight()));
+        // Agregamos el JLabel al JPanel del JFrame
+        this.getContentPane().add(fondoLabel);
 
-    // Añadir el JLabel con la imagen al JLayeredPane
-    layeredPane.add(fondoLabel, JLayeredPane.DEFAULT_LAYER);
-
-    // Crear un panel para contener los demás componentes
-    JPanel panelSuperior = new JPanel();
-    panelSuperior.setOpaque(false); // Hacer el panel transparente
-    panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.Y_AXIS)); // Layout vertical
-
-    // Añadir todos los componentes al panel superior
-    panelSuperior.add(jLabelTitulo);
-    panelSuperior.add(jLabelSelecciona);
-    panelSuperior.add(jScrollPane1);
-    panelSuperior.add(jTextFieldBuscar);
-    panelSuperior.add(jButtonBuscar);
-    panelSuperior.add(jButtonAdoptar);
-
-    // Añadir el panel al JLayeredPane
-    layeredPane.add(panelSuperior, JLayeredPane.PALETTE_LAYER);
-
-    // Añadir el JLayeredPane al contenedor del JDialog
-    this.getContentPane().add(layeredPane);
-    this.getContentPane().revalidate(); // Revalidar el contenedor
-    this.getContentPane().repaint(); // Volver a pintar
-}
-
+        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
+        this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
+    }
 
     
     
