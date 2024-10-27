@@ -30,19 +30,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
    private void setFondoPantalla() {
-        // Carga de la imagen de fondo desde el archivo
-            ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
+        
+        ImageIcon fondo = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
 
-        // Crear un JLabel que contenga la imagen
         JLabel fondoLabel = new JLabel(fondo);
 
-        // Configuramos el tamaño del JLabel al tamaño del JFrame
         fondoLabel.setSize(this.getWidth(), this.getHeight());
 
-        // Agregamos el JLabel al JPanel del JFrame
         this.getContentPane().add(fondoLabel);
 
-        // Para que los otros componentes aparezcan encima del fondo, debemos ajustar el layout
         this.getContentPane().setLayout(null);  // Desactivar el layout automático para colocar manualmente
     }
 

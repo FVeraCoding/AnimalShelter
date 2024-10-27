@@ -69,7 +69,6 @@ public class VerGatos extends javax.swing.JDialog {
             dialogoGato1.setVisible(true);
         }
     });
-       
         
         jLabelFotoGato2.addMouseListener(new MouseAdapter() {
         @Override

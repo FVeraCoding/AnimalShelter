@@ -192,6 +192,7 @@ public class Registro extends javax.swing.JDialog {
         if(telefono> 99999999 && telefono<1000000000 && !jTextFieldTelefono.getText().isEmpty()){
             telefono = Integer.parseInt(jTextFieldTelefono.getText());
         }
+        
         Date fechaRegistro = (Date) jSpinner1.getValue();
         String usuario = jTextFieldUsuario.getText();
         String contraseña = jPasswordFieldContras.getText();
@@ -202,7 +203,6 @@ public class Registro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Registro realizado con éxito..", "Válido", JOptionPane.INFORMATION_MESSAGE);
             ListaSocios.addSocio(socio);
             this.setVisible(false);
-
         } else {
             JOptionPane.showMessageDialog(this, "Los datos introducidos son incorrectos.", "Error de registro", JOptionPane.ERROR_MESSAGE);
         }

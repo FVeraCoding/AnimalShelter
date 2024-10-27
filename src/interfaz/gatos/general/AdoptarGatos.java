@@ -164,8 +164,7 @@ public class AdoptarGatos extends javax.swing.JDialog {
 
         this.sorter = new TableRowSorter<>(tableModel);
         jTableGatos.setRowSorter(sorter);
-        
-        
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
